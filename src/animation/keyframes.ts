@@ -1,41 +1,7 @@
-import { keyframes } from "@mui/material";
+export const MoveToBottom = (param: number[]) => [param[0] + 55, param[1]];
 
-export const MoveToBottom = (top: number, left: number) => keyframes`
-0%{ 
-    top:${top}px;
-    left:${left}px;
- }
-100%{
-    top:${top + 55}px;
-    left:${left}px;
-}`;
+export const MoveToTop = (param: number[]) => [param[0] - 55, param[1]];
 
-export const MoveToTop = (top: number, left: number) => keyframes`
-0%{ 
-    top:${top}px;
-    left:${left}px;
- }
-100%{
-    top:${top - 55}px;
-    left:${left}px;
-}`;
+export const MoveToRight = (param: number[]) => [param[0], param[1] + 55];
 
-export const MoveToRight = (top: number, left: number) => keyframes`
-0%{ 
-    top:${top}px;
-    left:${left}px;
- }
-100%{
-    top:${top}px;
-    left:${left + 55}px;
-}`;
-
-export const MoveToLeft = (top: number, left: number) => keyframes`
-0%{ 
-    top:${top}px;
-    left:${left}px;
- }
-100%{
-    top:${top}px;
-    left:${left - 55}px;
-}`;
+export const MoveToLeft = (param: number[]) => [param[0], param[1] - 55];
