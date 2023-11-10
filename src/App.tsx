@@ -11,8 +11,9 @@ const BasicStyle = {
   position: "absolute",
   width: "50px",
   height: "50px",
-  backgroundColor: "#000",
+  backgroundColor: "#fff",
   borderRadius: "12px",
+  opacity: 0.3,
 };
 
 function App() {
@@ -142,7 +143,7 @@ function App() {
           return null;
       }
       setTurn((turn + 1) % 12);
-    }, 200);
+    }, 180);
     return () => clearInterval(counter);
   }, [block, turn]);
 
@@ -152,112 +153,93 @@ function App() {
       <Box
         sx={{
           position: "relative",
+          overflow: "hidden",
           width: "500px",
           height: "500px",
-          // background:
-          //   "linear-gradient(to right,rgba(245,134,45),rgba(255,23,99))",
           border: "1px solid #000",
+          // "&::before": {
+          //   position: "absolute",
+          //   content: '""',
+          //   zIndex: -2,
+          //   display: "block",
+          //   width: "500px",
+          //   height: "500px",
+          //   backgroundColor:
+          //     "linear-gradient(to right,rgba(245,134,45),rgba(255,23,99))",
+          //   backgroundImage:
+          //     "linear-gradient(to right,rgba(0,0,0),rgba(0,0,0))",
+          // },
         }}
       >
+        <Box
+          sx={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            zIndex: 1,
+            width: "500px",
+            height: "500px",
+            mixBlendMode: "overlay",
+            background: "#000",
+          }}
+        ></Box>
+        <Box
+          sx={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            zIndex: 1,
+            width: "220px",
+            height: "500px",
+            margin: "0 140px",
+            mixBlendMode: "overlay",
+            backgroundImage:
+              "linear-gradient(to right,rgba(245,134,45),rgba(255,23,99))",
+          }}
+        ></Box>
         <Box
           sx={{
             ...BasicStyle,
             top: block.block0[0],
             left: block.block0[1],
-            transition: "0.2s all ease-in-out",
+            transition: "0.18s all ease-in-out",
           }}
-        >
-          <Typography variant="h5" color={"primary"}>
-            0
-          </Typography>
-        </Box>
+        ></Box>
         <Box
           sx={{
             ...BasicStyle,
             top: block.block1[0],
             left: block.block1[1],
-            transition: "0.2s all ease-in-out",
+            transition: "0.18s all ease-in-out",
           }}
-        >
-          <Typography variant="h5" color={"#fff"}>
-            1
-          </Typography>
-        </Box>
+        ></Box>
         <Box
           sx={{
             ...BasicStyle,
             top: block.block2[0],
             left: block.block2[1],
-            transition: "0.2s all ease-in-out",
+            transition: "0.18s all ease-in-out",
           }}
-        >
-          <Typography variant="h5" color={"#fff"}>
-            2
-          </Typography>
-        </Box>
+        ></Box>
         <Box
           sx={{
             ...BasicStyle,
             top: block.block3[0],
             left: block.block3[1],
-            transition: "0.2s all ease-in-out",
+            transition: "0.18s all ease-in-out",
           }}
-        >
-          <Typography variant="h5" color={"#fff"}>
-            3
-          </Typography>
-        </Box>
+        ></Box>
         <Box
           sx={{
             ...BasicStyle,
             top: block.block4[0],
             left: block.block4[1],
-            transition: "0.2s all ease-in-out",
+            transition: "0.18s all ease-in-out",
           }}
-        >
-          <Typography variant="h5" color={"#fff"}>
-            4
-          </Typography>
-        </Box>
-
-        {position.map((v, idx) => {
-          return (
-            <Box
-              key={idx}
-              sx={{
-                position: "absolute",
-                width: "48px",
-                height: "48px",
-                border: "1px solid #b6b6b6",
-                borderRadius: "12px",
-                top: v[0],
-                left: v[1],
-              }}
-            >
-              <Typography variant="caption">
-                x:{v[1]}, y:{v[0]}
-              </Typography>
-            </Box>
-          );
-        })}
+        ></Box>
       </Box>
     </div>
   );
 }
 
 export default App;
-
-const position = [
-  [225, 140], //pos1
-  [280, 140], //pos1b
-  [280, 195], //pos2b
-  [225, 195], //pos2
-  [170, 195], //pos2t
-  [170, 250], //pos3t
-  [225, 250], //pos3
-  [280, 250], //pos3b
-  [280, 305], //pos4b
-  [225, 305], //pos4
-  [170, 305], //pos4t
-  [170, 140], //pos1t
-];
