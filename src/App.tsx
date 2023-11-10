@@ -13,7 +13,7 @@ const BasicStyle = {
   height: "50px",
   backgroundColor: "#fff",
   borderRadius: "12px",
-  opacity: 0.3,
+  opacity: 0.5,
 };
 
 function App() {
@@ -143,7 +143,7 @@ function App() {
           return null;
       }
       setTurn((turn + 1) % 12);
-    }, 180);
+    }, 160);
     return () => clearInterval(counter);
   }, [block, turn]);
 
@@ -153,22 +153,8 @@ function App() {
       <Box
         sx={{
           position: "relative",
-          overflow: "hidden",
           width: "500px",
           height: "500px",
-          border: "1px solid #000",
-          // "&::before": {
-          //   position: "absolute",
-          //   content: '""',
-          //   zIndex: -2,
-          //   display: "block",
-          //   width: "500px",
-          //   height: "500px",
-          //   backgroundColor:
-          //     "linear-gradient(to right,rgba(245,134,45),rgba(255,23,99))",
-          //   backgroundImage:
-          //     "linear-gradient(to right,rgba(0,0,0),rgba(0,0,0))",
-          // },
         }}
       >
         <Box
@@ -197,46 +183,18 @@ function App() {
               "linear-gradient(to right,rgba(245,134,45),rgba(255,23,99))",
           }}
         ></Box>
-        <Box
-          sx={{
-            ...BasicStyle,
-            top: block.block0[0],
-            left: block.block0[1],
-            transition: "0.18s all ease-in-out",
-          }}
-        ></Box>
-        <Box
-          sx={{
-            ...BasicStyle,
-            top: block.block1[0],
-            left: block.block1[1],
-            transition: "0.18s all ease-in-out",
-          }}
-        ></Box>
-        <Box
-          sx={{
-            ...BasicStyle,
-            top: block.block2[0],
-            left: block.block2[1],
-            transition: "0.18s all ease-in-out",
-          }}
-        ></Box>
-        <Box
-          sx={{
-            ...BasicStyle,
-            top: block.block3[0],
-            left: block.block3[1],
-            transition: "0.18s all ease-in-out",
-          }}
-        ></Box>
-        <Box
-          sx={{
-            ...BasicStyle,
-            top: block.block4[0],
-            left: block.block4[1],
-            transition: "0.18s all ease-in-out",
-          }}
-        ></Box>
+        {[0, 1, 2, 3, 4].map((v) => {
+          return (
+            <Box
+              sx={{
+                ...BasicStyle,
+                top: block[`block${v}` as keyof typeof block][0],
+                left: block[`block${v}` as keyof typeof block][1],
+                transition: "0.23s all ease-in-out",
+              }}
+            ></Box>
+          );
+        })}
       </Box>
     </div>
   );
